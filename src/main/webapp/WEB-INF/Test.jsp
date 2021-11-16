@@ -9,5 +9,7 @@
 </head>
 <body>
 <h1>Hello World !</h1>
+<h2> Combat entité 1 VS entité 2</h2>
+<c:out value="${jeu.testCombat()}"/>
 </body>
 </html>

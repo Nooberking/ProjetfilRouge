@@ -8,7 +8,7 @@ public class Personnage extends Entity {
 	public int attack(Entity e) {
 		// TODO Auto-generated method stub
 				if (physicalAttackPoints > magicalAttackPoints) e.lifePoints -= physicalAttackPoints - e.physicalAttackPoints; 
-				else e.lifePoints -= magicalAttackPoints - e.magicalDefense; 
+				else e.lifePoints -= Math.max(magicalAttackPoints - e.magicalDefense, 0); 
 				return e.lifePoints;
 	}
 	public static Personnage createWarrior()  {
