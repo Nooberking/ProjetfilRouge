@@ -32,6 +32,11 @@ public class Personnage extends Entity {
 		return p; 
 	}
 	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
+	@Override
 	public void action(Entity e) {
 		// TODO Auto-generated method stub
 		

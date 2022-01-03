@@ -1,15 +1,25 @@
 package ejbs;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
-@Stateless
+
+@Stateful
 @LocalBean
 public class Jeu 
 {
-	Personnage joueur=Personnage.createWarrior("FirstWarrior");
+	Personnage joueur= Personnage.createWarrior("");
 	Ennemy firstenemy= new Ennemy();
 
+	public String getNomJoueur()
+	{
+		return joueur.toString();
+	
+	}
+	
+	public void setPersonnage(Personnage joueur) {
+		this.joueur = joueur;
+	}
 	
 	public void Combat(Entity e1,Entity e2)
 	{
@@ -55,13 +65,12 @@ public class Jeu
 		}
 		
 	}
-	public static void main(String[] args) {
-		
-		Personnage joueur=Personnage.createWarrior("FirstWarrior");
-		Ennemy firstenemy= new Ennemy();
-		Jeu j1= new Jeu();
-		//j1.Combat(joueur, firstenemy);
-		j1.autoBattle(joueur, firstenemy);
-	}
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * Personnage joueur=Personnage.createWarrior("FirstWarrior"); Ennemy
+	 * firstenemy= new Ennemy(); Jeu j1= new Jeu(); //j1.Combat(joueur, firstenemy);
+	 * j1.autoBattle(joueur, firstenemy); }
+	 */
 
 }

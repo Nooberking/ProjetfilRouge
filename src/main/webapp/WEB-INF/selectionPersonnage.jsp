@@ -12,7 +12,7 @@
 
 	<h1> Choisis ton personnage :</h1>
 	
-	<form method="post" action="/CreationPersonnage">
+	<form method="post" action="/ProjetFilRouge/CreationPersonnage">
 		<p>
 		<label for="pseudo"> Nom du personnage :</label>
 		<input type="text" name="pseudo" id="pseudo" >
@@ -24,8 +24,10 @@
 		<input type="radio" name="choixPerso" value="mage" id="mage" /> 
 		<label for="mage">mage </label><br/>
 		</p>
-		<input type="submit" value="Comfirmer" />
+		<input type="submit" value="Confirmer" />
 	</form>
+	
+	<c:out value="${jeu.getNomJoueur()}"/>
 	
 	
 	
