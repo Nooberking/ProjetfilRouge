@@ -58,11 +58,11 @@ public class CreationPersonnage extends HttpServlet {
 		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/selectionPersonnage.jsp");
 		String nomPerso =request.getParameter("pseudo");
         String choix= request.getParameter("choixPerso");
-        if(choix =="guerrier")
+        if(choix.equals("guerrier"))
         {
             jeu.setPersonnage(Personnage.createWarrior(nomPerso));
         }
-        if(choix=="mage")
+        if(choix.equals("mage"))
         {
             jeu.setPersonnage(Personnage.createWizard(nomPerso));
         }

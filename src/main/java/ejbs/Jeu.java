@@ -9,7 +9,7 @@ import javax.ejb.Stateful;
 @LocalBean
 public class Jeu 
 {
-	Personnage joueur= Personnage.createWarrior("");
+	Personnage joueur;
 	Ennemy firstenemy= new Ennemy();
 
 	public String getNomJoueur()
