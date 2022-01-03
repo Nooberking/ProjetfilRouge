@@ -2,8 +2,13 @@ package ejbs;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
+<<<<<<< HEAD
 
 
+=======
+import javax.ejb.Stateless;
+
+>>>>>>> 8eff5dd874cdbec437578af8a099a1e07175eb2d
 @Stateful
 @LocalBean
 public class Jeu 
@@ -35,6 +40,15 @@ public class Jeu
 	}
 	public String testCombat() {
 		return CombatV2(joueur, firstenemy); 
+	}
+	public Personnage getPersonnage()
+	{
+		return this.joueur;
+		
+	}
+	public void setPersonnage(Personnage p)
+	{
+		joueur=p;
 	}
 	
 	public void autoBattle(Entity e1,Entity e2)
@@ -72,5 +86,6 @@ public class Jeu
 	 * firstenemy= new Ennemy(); Jeu j1= new Jeu(); //j1.Combat(joueur, firstenemy);
 	 * j1.autoBattle(joueur, firstenemy); }
 	 */
+
 
 }
