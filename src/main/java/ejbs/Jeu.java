@@ -2,13 +2,9 @@ package ejbs;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
-<<<<<<< HEAD
 
 
-=======
-import javax.ejb.Stateless;
 
->>>>>>> 8eff5dd874cdbec437578af8a099a1e07175eb2d
 @Stateful
 @LocalBean
 public class Jeu 
@@ -46,10 +42,7 @@ public class Jeu
 		return this.joueur;
 		
 	}
-	public void setPersonnage(Personnage p)
-	{
-		joueur=p;
-	}
+
 	
 	public void autoBattle(Entity e1,Entity e2)
 	{
