@@ -8,6 +8,12 @@
 <title>Choix de l'adversaire</title>
 </head>
 <body>
+	<form method="get" action="/ProjetFilRouge/Combat">
+	<input type="submit" value="test">
+	<c:out value= "${jeu.getNomJoueur()}"/>
+	
+	
+	</form>
 	<h1>Choisis ton adversaire !</h1>
 
 	<form method="post" action="/ProjetFilRouge/Combat">

@@ -21,7 +21,6 @@ import ejbs.Personnage;
 public class CreationPersonnage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-
 	Jeu jeu; 
 
        
@@ -54,7 +53,7 @@ public class CreationPersonnage extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		HttpSession maSession = request.getSession();
-		if(maSession.getAttribute("jeu")== null) maSession.setAttribute("jeu", jeu);
+		
 		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/selectionPersonnage.jsp");
 		String nomPerso =request.getParameter("pseudo");
         String choix= request.getParameter("choixPerso");
@@ -66,6 +65,7 @@ public class CreationPersonnage extends HttpServlet {
         {
             jeu.setPersonnage(Personnage.createWizard(nomPerso));
         }
+        if(maSession.getAttribute("jeu")== null) maSession.setAttribute("jeu", jeu);
         vue.forward(request, response);
 
 	}

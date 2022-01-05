@@ -52,6 +52,10 @@ public class Personnage extends Entity {
 		{
 			return "Aucun dégât infligé ! \nIl lui reste " + e.lifePoints + " points de vie.";
 		}
-		
 	}
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 }
