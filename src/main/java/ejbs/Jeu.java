@@ -10,75 +10,76 @@ import javax.ejb.Stateful;
 public class Jeu 
 {
 	Personnage joueur;
-	Ennemy firstenemy= new Ennemy();
-
+	Ennemy firstEnnemy;
+	Ennemy secondEnnemy;
+	Actions nextAction; 
+	boolean firstEnnemySelected; 
+	
 	public String getNomJoueur()
 	{
 		return joueur.toString();
-	
 	}
 	
 	public void setPersonnage(Personnage joueur) {
 		this.joueur = joueur;
 	}
 	
-	public void Combat(Entity e1,Entity e2)
-	{
-		System.out.println(e1.autoAttack(e2));
-		System.out.println(e2.autoAttack(e1));
-	}
-	public String CombatV2(Entity e1, Entity e2) {
-		String displayCombat = "";
-		displayCombat += "\n il reste "+ e1.autoAttack(e2) + "  √† l'entit√© 1"; 
-		displayCombat += "\n il reste "+ e2.autoAttack(e1) + " √† l'entit√© 2"; 
-		return displayCombat; 
-		
-	}
-	public String testCombat() {
-		return CombatV2(joueur, firstenemy); 
-	}
 	public Personnage getPersonnage()
 	{
 		return this.joueur;
 		
 	}
-
 	
-	public void autoBattle(Entity e1,Entity e2)
-	{
-		boolean battleIsOver=false;
-		String displayCombat = "";
-		displayCombat += "\n il reste "+ e1.lifePoints+ "  √† l'entit√© 1"; 
-
-		while(!battleIsOver)
-		{
-			e1.autoAttack(e2);
-			System.out.println( "\n il reste "+ e2.lifePoints + "points de vie  √† " +e2.name);
-			if(e2.lifePoints<=0)
-			{
-				battleIsOver=true;
-				System.out.println("victoire de "+ e1.name);
-			}
-			else
-			{
-				e2.autoAttack(e1);
-				System.out.println("\n il reste " + e1.lifePoints + "points de vie  √† " + e1.name);
-				if(e1.lifePoints<=0)
-				{
-					battleIsOver=true;
-					System.out.println("victoire de " + e2.name);
-				}
-			}
-		}
-		
+	public Ennemy getFirstEnnemy() {
+		return firstEnnemy;
 	}
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * Personnage joueur=Personnage.createWarrior("FirstWarrior"); Ennemy
-	 * firstenemy= new Ennemy(); Jeu j1= new Jeu(); //j1.Combat(joueur, firstenemy);
-	 * j1.autoBattle(joueur, firstenemy); }
-	 */
+
+	public void setFirstEnnemy(Ennemy firstEnnemy) {
+		this.firstEnnemy = firstEnnemy;
+	}
+
+	public Ennemy getSecondEnnemy() {
+		return secondEnnemy;
+	}
+
+	public void setSecondEnnemy(Ennemy secondEnnemy) {
+		this.secondEnnemy = secondEnnemy;
+	}
+
+	public Actions getNextAction() {
+		return nextAction;
+	}
+
+	public void setNextAction(Actions nextAction) {
+		this.nextAction = nextAction;
+	}
+	
+	public String tourJoueur()
+	{
+		String rÈsultat = ""; 
+		switch (nextAction) {
+		case autoAttack:
+			rÈsultat = "Il lui reste ";
+			if (firstEnnemySelected) rÈsultat  += "" + joueur.autoAttack(firstEnnemy);
+			else rÈsultat += "" + joueur.autoAttack(secondEnnemy); 
+			break;
+			
+		case magicalAttack:
+			if (firstEnnemySelected) rÈsultat  = "" + joueur.magicalAttack(firstEnnemy);
+			else rÈsultat += "" + joueur.magicalAttack(secondEnnemy); 
+			break;
+			
+		case physicalAttack:
+			if (firstEnnemySelected) rÈsultat  = "" + joueur.physicalAttack(firstEnnemy);
+			else rÈsultat += "" + joueur.physicalAttack(secondEnnemy); 
+			break;
+
+		default:
+			rÈsultat = "pas de combat ";
+			break;
+		}
+		return rÈsultat; 	
+	}
 
 
 }

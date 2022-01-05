@@ -1,15 +1,18 @@
 package ejbs;
 
+import java.util.Random;
+
 public class Ennemy extends Entity {
 	
 	
 	public Ennemy() {
-		this.lifePoints = 10; 
-		this.magicalAttackPoints = 1; 
-		this.physicalAttackPoints = 1 ; 
-		this.physicalDefense = 1; 
-		this.magicalDefense = 1;
-		this.name="generic";
+		Random random = new Random();
+		this.lifePoints = random.nextInt(10); 
+		this.magicalAttackPoints =random.nextInt(10); 
+		this.physicalAttackPoints =random.nextInt(10) ; 
+		this.physicalDefense =random.nextInt(10); 
+		this.magicalDefense = random.nextInt(10);
+		this.name= NomsEnnemis.aleatoire().name() ;
 	}
 	public Ennemy(int lifePoints, int physicalAttackPoints, int magicalAttackPoints, int physicalDefense, int magicalDefense,String name) {
 		this.lifePoints = lifePoints; 
@@ -19,9 +22,5 @@ public class Ennemy extends Entity {
 		this.magicalDefense = magicalDefense; 
 		this.name=name;
 	}
-	@Override
-	public void action(Entity e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

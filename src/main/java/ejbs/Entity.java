@@ -8,12 +8,13 @@ public abstract class Entity {
 	protected int magicalDefense;
 	protected String name;
 	
-	public abstract void action (Entity e);
+	
 	
 	public int autoAttack(Entity e) {
-		// TODO Auto-generated method stub
-				if (physicalAttackPoints > magicalAttackPoints) e.lifePoints -= physicalAttackPoints - e.physicalAttackPoints; 
-				else e.lifePoints -= Math.max(magicalAttackPoints - e.magicalDefense, 0); 
+		// Permet d'attaquer automatiquement l'entité e
+				if (physicalAttackPoints > magicalAttackPoints) e.lifePoints = Math.max(e.lifePoints - Math.max(physicalAttackPoints - e.physicalDefense,0),0) ; 
+				else e.lifePoints = Math.max(e.lifePoints - Math.max(magicalAttackPoints - e.magicalDefense, 0),0); 
 				return e.lifePoints;
 	}
+	
 }
