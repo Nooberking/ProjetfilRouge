@@ -44,9 +44,9 @@
 			<div>
 				<h2>VS</h2>
 			</div>
-			<c:if test="${jeu.firstEnnemySelected}">
+			<c:if test="${jeu.isFirstEnnemySelected()}">
 				<div>
-					<h2><c:out value="${jeu.getFirstEnnemy().getName()}"/></h2>
+					<h2><c:out value="${firstEnnemy.getName()}"/></h2>
 					<ul>
 						<li>lifepoints : <c:out value= "${jeu.getFirstEnnemy().getLifePoints()}"/></li>
 						<li>physicalAttackPoints : <c:out value= "${jeu.getFirstEnnemy().getPhysicalAttackPoints()}"/></li>
@@ -57,9 +57,9 @@
 					
 				</div>
 			</c:if>
-			<c:if test="${!jeu.firstEnnemySelected}">
+			<c:if test="${!jeu.isFirstEnnemySelected()}">
 				<div>
-					<h2><c:out value="${jeu.getSecondEnnemy().getName()}"/></h2>
+					<h2><c:out value="${jeu.secondEnnemy.getName()}"/></h2>
 					<ul>
 						<li>lifepoints : <c:out value= "${jeu.getSecondEnnemy().getLifePoints()}"/></li>
 						<li>physicalAttackPoints : <c:out value= "${jeu.getSecondEnnemy().getPhysicalAttackPoints()}"/></li>
@@ -69,15 +69,18 @@
 					</ul>
 				</div>
 			</c:if>
+			
+			<p><c:out value="${resultat}"/> </p>
 			<form method="post" action="/ProjetFilRouge/Combat">
 				<input type="radio" name="action" value="autoAttack" id="autoAttack" /> 
 				<label for="autoAttack">Auto-attaque</label>
 				<input type="radio" name="action" value="physicalAttack" id="physicalAttack" /> 
-				<label for="physicalAttack">Attauqe physique</label>
+				<label for="physicalAttack">Attaque physique</label>
 				<input type="radio" name="action" value="magicalAttack" id="magicalAttack" /> 
 				<label for="magicalAttack">Attaque magique</label>
 				<input type="submit" value="valider mon choix">
 			</form>
+			
 			
 		</c:otherwise>
 	</c:choose>

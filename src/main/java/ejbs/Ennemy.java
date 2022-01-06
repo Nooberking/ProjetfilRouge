@@ -5,7 +5,7 @@ import java.util.Random;
 public class Ennemy extends Entity {
 	
 	
-	public Ennemy() {
+	public Ennemy(String lol) {
 		Random random = new Random();
 		this.lifePoints = random.nextInt(10); 
 		this.magicalAttackPoints =random.nextInt(10); 

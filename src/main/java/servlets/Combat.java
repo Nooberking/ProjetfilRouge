@@ -51,8 +51,8 @@ public class Combat extends HttpServlet {
 		// TODO Auto-generated method stub
 		start = true;
 		HttpSession maSession = request.getSession(); 
-		jeu.setFirstEnnemy(new Ennemy());
-		jeu.setSecondEnnemy(new Ennemy()); 
+		jeu.setFirstEnnemy(new Ennemy(""));
+		jeu.setSecondEnnemy(new Ennemy("")); 
 		startBattle =true;
 		battleOver = false; 
 		
@@ -79,10 +79,9 @@ public class Combat extends HttpServlet {
 			{
 				startBattle = false; 
 				tour ++; 
-				jeu.firstEnnemySelected = request.getParameter("ennemi").equals("ennemi1");
+				jeu.setFirstEnnemySelected( request.getParameter("ennemi").equals("ennemi1"));
 				resultat = "En attente d'une action du joueur ..."; 
-				maSession.removeAttribute("firstEnnemy"); 
-				maSession.removeAttribute("secondEnnemy"); 
+				
 				maSession.setAttribute("tour", tour); 
 				
 			}

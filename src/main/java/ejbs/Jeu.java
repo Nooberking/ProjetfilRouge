@@ -13,7 +13,7 @@ public class Jeu
 	Ennemy firstEnnemy;
 	Ennemy secondEnnemy;
 	Actions nextAction; 
-	public boolean firstEnnemySelected; 
+	boolean firstEnnemySelected; 
 	
 	public String getNomJoueur()
 	{
@@ -54,6 +54,15 @@ public class Jeu
 		this.nextAction = nextAction;
 	}
 	
+	
+	public boolean isFirstEnnemySelected() {
+		return firstEnnemySelected;
+	}
+
+	public void setFirstEnnemySelected(boolean firstEnnemySelected) {
+		this.firstEnnemySelected = firstEnnemySelected;
+	}
+
 	public String tourJoueur()
 	{
 		String résultat = ""; 
