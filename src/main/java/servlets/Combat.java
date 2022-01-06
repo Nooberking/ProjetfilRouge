@@ -9,7 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.Action;
 
+import ejbs.Actions;
+import ejbs.Ennemy;
 import ejbs.Jeu;
 
 /**
@@ -19,7 +23,18 @@ import ejbs.Jeu;
 public class Combat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	Jeu jeu; 
+	Jeu jeu;
+	private int tour = 0;
+	public boolean start; 
+	private boolean gameOver = false;
+	private boolean startBattle = true; 
+	private boolean battleOver = false;
+	
+	
+	
+	public int getTour() {
+		return tour; 
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,17 +49,76 @@ public class Combat extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/ChoixEnnemi.jsp");
-	       
-	        vue.forward(request, response);
+		start = true;
+		HttpSession maSession = request.getSession(); 
+		jeu.setFirstEnnemy(new Ennemy());
+		jeu.setSecondEnnemy(new Ennemy()); 
+		startBattle =true;
+		battleOver = false; 
+		
+		maSession.setAttribute("firstEnnemy", jeu.getFirstEnnemy());
+		maSession.setAttribute("secondEnnemy", jeu.getSecondEnnemy()); 
+		maSession.setAttribute("start", start); 
+		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/ChoixEnnemi.jsp");
+		vue.forward(request, response);		
+		
 		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
+		HttpSession maSession = request.getSession();
+		String resultat =""; 
+		if (!gameOver)
+		{   
+			if (startBattle) 
+			{
+				startBattle = false; 
+				tour ++; 
+				jeu.firstEnnemySelected = request.getParameter("ennemi").equals("ennemi1");
+				resultat = "En attente d'une action du joueur ..."; 
+				maSession.removeAttribute("firstEnnemy"); 
+				maSession.removeAttribute("secondEnnemy"); 
+				maSession.setAttribute("tour", tour); 
+				
+			}
+			else 
+			{
+				if (!battleOver)
+				{
+					jeu.setNextAction(Actions.valueOf(request.getParameter("action")));
+					resultat = jeu.tourJoueur(); 
+					resultat += jeu.tourEnnemy();
+					
+					if (jeu.getPersonnage().getLifePoints() <= 0)
+						{
+						gameOver = true; 
+						
+						}
+					else 
+					{
+						if(jeu.getFirstEnnemy().getLifePoints() <= 0 || jeu.getSecondEnnemy().getLifePoints() <= 0) 
+							{
+							battleOver =true; 
+							
+							}
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		maSession.setAttribute("gameOver", gameOver); 
+		maSession.setAttribute("battleOver", battleOver);
+		maSession.setAttribute("resultat", resultat); 
+		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/PageCombat.jsp");
+		vue.forward(request, response);	
 		
 	}
 

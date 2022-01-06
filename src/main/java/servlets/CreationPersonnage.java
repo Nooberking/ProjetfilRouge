@@ -54,7 +54,7 @@ public class CreationPersonnage extends HttpServlet {
 
 		HttpSession maSession = request.getSession();
 		
-		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/selectionPersonnage.jsp");
+		RequestDispatcher vue = request.getRequestDispatcher("WEB-INF/ChoixEnnemi.jsp");
 		String nomPerso =request.getParameter("pseudo");
         String choix= request.getParameter("choixPerso");
         if(choix.equals("guerrier"))

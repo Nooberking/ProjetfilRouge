@@ -13,7 +13,7 @@ public class Jeu
 	Ennemy firstEnnemy;
 	Ennemy secondEnnemy;
 	Actions nextAction; 
-	boolean firstEnnemySelected; 
+	public boolean firstEnnemySelected; 
 	
 	public String getNomJoueur()
 	{
@@ -79,6 +79,13 @@ public class Jeu
 			break;
 		}
 		return résultat; 	
+	}
+	public String tourEnnemy() 
+	{
+		String résultat = "\n\n L'adversaire  a répliqué ! "; 
+		résultat +="\n " + (firstEnnemySelected ? firstEnnemy.autoAttack(joueur) : secondEnnemy.autoAttack(joueur)) + " de dégats ! "; 
+		return résultat; 
+		
 	}
 
 
