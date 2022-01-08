@@ -24,12 +24,13 @@ public class Combat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	Jeu jeu;
+	
 	private int tour = 0;
 	public boolean start; 
 	private boolean gameOver = false;
 	private boolean startBattle = true; 
 	private boolean battleOver = false;
-	
+	public String isEnnemy1;
 	
 	
 	public int getTour() {
@@ -51,10 +52,11 @@ public class Combat extends HttpServlet {
 		// TODO Auto-generated method stub
 		start = true;
 		HttpSession maSession = request.getSession(); 
-		jeu.setFirstEnnemy(new Ennemy(""));
-		jeu.setSecondEnnemy(new Ennemy("")); 
+		jeu.setFirstEnnemy(new Ennemy());
+		jeu.setSecondEnnemy(new Ennemy()); 
 		startBattle =true;
 		battleOver = false; 
+		
 		
 		maSession.setAttribute("firstEnnemy", jeu.getFirstEnnemy());
 		maSession.setAttribute("secondEnnemy", jeu.getSecondEnnemy()); 
@@ -73,13 +75,16 @@ public class Combat extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession maSession = request.getSession();
 		String resultat =""; 
+	
+		
 		if (!gameOver)
 		{   
 			if (startBattle) 
 			{
 				startBattle = false; 
 				tour ++; 
-				jeu.setFirstEnnemySelected( request.getParameter("ennemi").equals("ennemi1"));
+				isEnnemy1 =request.getParameter("ennemi").equals("ennemi1") ? "true" : "false"; 
+				jeu.setFirstEnnemySelected(isEnnemy1.equals("true"));
 				resultat = "En attente d'une action du joueur ..."; 
 				
 				maSession.setAttribute("tour", tour); 
@@ -88,10 +93,12 @@ public class Combat extends HttpServlet {
 			else 
 			{
 				if (!battleOver)
-				{
+				{ 
+					if (maSession.getAttribute("isEnnemy1")!= null)isEnnemy1 =maSession.getAttribute("isEnnemy1").equals("ennemi1") ? "true" : "false";
+					jeu.setFirstEnnemySelected(maSession.getAttribute("isEnnemy1").equals("true"));
 					jeu.setNextAction(Actions.valueOf(request.getParameter("action")));
 					resultat = jeu.tourJoueur(); 
-					resultat += jeu.tourEnnemy();
+					/*resultat += jeu.tourEnnemy();
 					
 					if (jeu.getPersonnage().getLifePoints() <= 0)
 						{
@@ -105,14 +112,14 @@ public class Combat extends HttpServlet {
 							battleOver =true; 
 							
 							}
-					}
+					}*/
 					
 				}
 				
 			}
 			
 		}
-		
+		maSession.setAttribute("isEnnemy1", isEnnemy1);
 		maSession.setAttribute("gameOver", gameOver); 
 		maSession.setAttribute("battleOver", battleOver);
 		maSession.setAttribute("resultat", resultat); 

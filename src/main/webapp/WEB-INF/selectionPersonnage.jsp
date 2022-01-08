@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="styles/style1.css" />
 <title>selection du personnage</title>
 </head>
 
@@ -18,11 +19,11 @@
 				name="pseudo" id="pseudo">
 		</p>
 		<p>
-			Veuillez choisir la classe : <br /> <input type="radio"
-				name="choixPerso" value="guerrier" id="guerrier" /> <label
-				for="guerrier">guerrier </label><br /> <input type="radio"
-				name="choixPerso" value="mage" id="mage" /> <label for="mage">mage
-			</label><br />
+			Veuillez choisir la classe : 
+			<input type="radio" name="choixPerso" class="choixPerso guerrier" value="guerrier" id="guerrier" /> <label
+				for="guerrier">guerrier</label>
+				<input type="radio" name="choixPerso" class="choixPerso mage" value="mage" id="mage" /> 
+				<label for="mage">mage</label>
 		</p>
 		<input type="submit" value="Confirmer" />
 	</form>

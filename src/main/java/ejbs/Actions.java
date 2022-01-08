@@ -1,6 +1,6 @@
 package ejbs;
 
 public enum Actions {
-	autoAttack, magicalAttack,physicalAttack ;
+	autoAttack, magicalAttack,physicalAttack,none ;
 
 }

@@ -2,10 +2,11 @@ package ejbs;
 
 import java.util.Random;
 
+
 public class Ennemy extends Entity {
 	
 	
-	public Ennemy(String lol) {
+	public Ennemy() {
 		Random random = new Random();
 		this.lifePoints = random.nextInt(10); 
 		this.magicalAttackPoints =random.nextInt(10); 

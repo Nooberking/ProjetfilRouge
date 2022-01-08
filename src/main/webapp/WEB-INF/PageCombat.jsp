@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="styles/style3.css"/>
 <title>Combat ! </title>
 </head>
 <body>
@@ -48,24 +49,25 @@
 				<div>
 					<h2><c:out value="${firstEnnemy.getName()}"/></h2>
 					<ul>
-						<li>lifepoints : <c:out value= "${jeu.getFirstEnnemy().getLifePoints()}"/></li>
-						<li>physicalAttackPoints : <c:out value= "${jeu.getFirstEnnemy().getPhysicalAttackPoints()}"/></li>
-						<li>magicalAttackPoints : <c:out value= "${jeu.getFirstEnnemy().getMagicalAttackPoints()}"/></li>
-						<li>physicalDefense : <c:out value= "${jeu.getFirstEnnemy().getPhysicalDefense()}"/></li>
-						<li>magicalDefense: <c:out value= "${jeu.getFirstEnnemy().getMagicalDefense()}"/></li>
+					<c:out value=""></c:out>
+						<li>lifepoints : <c:out value= "${firstEnnemy.getLifePoints()}"/></li>
+						<li>physicalAttackPoints : <c:out value= "${firstEnnemy.getPhysicalAttackPoints()}"/></li>
+						<li>magicalAttackPoints : <c:out value= "${firstEnnemy.getMagicalAttackPoints()}"/></li>
+						<li>physicalDefense : <c:out value= "${firstEnnemy.getPhysicalDefense()}"/></li>
+						<li>magicalDefense: <c:out value= "${firstEnnemy.getMagicalDefense()}"/></li>
 					</ul>
 					
 				</div>
 			</c:if>
 			<c:if test="${!jeu.isFirstEnnemySelected()}">
 				<div>
-					<h2><c:out value="${jeu.secondEnnemy.getName()}"/></h2>
+					<h2><c:out value="${secondEnnemy.getName()}"/></h2>
 					<ul>
-						<li>lifepoints : <c:out value= "${jeu.getSecondEnnemy().getLifePoints()}"/></li>
-						<li>physicalAttackPoints : <c:out value= "${jeu.getSecondEnnemy().getPhysicalAttackPoints()}"/></li>
-						<li>magicalAttackPoints : <c:out value= "${jeu.getSecondEnnemy().getMagicalAttackPoints()}"/></li>
-						<li>physicalDefense : <c:out value= "${jeu.getSecondEnnemy().getPhysicalDefense()}"/></li>
-						<li>magicalDefense: <c:out value= "${jeu.getSecondEnnemy().getMagicalDefense()}"/></li>
+						<li>lifepoints : <c:out value= "${secondEnnemy.getLifePoints()}"/></li>
+						<li>physicalAttackPoints : <c:out value= "${secondEnnemy.getPhysicalAttackPoints()}"/></li>
+						<li>magicalAttackPoints : <c:out value= "${secondEnnemy.getMagicalAttackPoints()}"/></li>
+						<li>physicalDefense : <c:out value= "${secondEnnemy.getPhysicalDefense()}"/></li>
+						<li>magicalDefense: <c:out value= "${secondEnnemy.getMagicalDefense()}"/></li>
 					</ul>
 				</div>
 			</c:if>

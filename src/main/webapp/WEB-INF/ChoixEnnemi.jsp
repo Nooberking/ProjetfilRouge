@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="styles/style2.css"/>
 <title>Choix de l'adversaire</title>
 </head>
 <body>

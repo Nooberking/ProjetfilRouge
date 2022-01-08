@@ -1,0 +1,21 @@
+body
+{
+	background-color :  #1c1c1e;
+	color : #fefefe;
+	text-align: center;
+	margin: 10em 0 0 0;
+	border: 5px solid #5A5E6B;
+	
+}
+input[type="submit"]
+{
+	background: #0066A2;
+	color: white;
+	border-radius: 0.7rem;
+	border-style: outset;
+	border-color: #0066A2;
+	height: 50px;
+	
+	font: bold 15px arial, sans-serif;
+	text-shadow:none;
+}

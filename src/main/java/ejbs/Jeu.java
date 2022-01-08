@@ -2,17 +2,19 @@ package ejbs;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
+import javax.enterprise.context.SessionScoped;
 
 
 
 @Stateful
+@SessionScoped
 @LocalBean
 public class Jeu 
 {
 	Personnage joueur;
 	Ennemy firstEnnemy;
 	Ennemy secondEnnemy;
-	Actions nextAction; 
+	Actions nextAction = Actions.none; 
 	boolean firstEnnemySelected; 
 	
 	public String getNomJoueur()
@@ -69,8 +71,8 @@ public class Jeu
 		switch (nextAction) {
 		case autoAttack:
 			résultat = "Il lui reste ";
-			if (firstEnnemySelected) résultat  += "" + joueur.autoAttack(firstEnnemy);
-			else résultat += "" + joueur.autoAttack(secondEnnemy); 
+			if (firstEnnemySelected) résultat  += "" + joueur.autoAttack(firstEnnemy) +"PV";
+			else résultat += "" + joueur.autoAttack(secondEnnemy) + "PV"; 
 			break;
 			
 		case magicalAttack:
@@ -84,8 +86,7 @@ public class Jeu
 			break;
 
 		default:
-			résultat = "pas de combat ";
-			break;
+			
 		}
 		return résultat; 	
 	}
@@ -96,6 +97,16 @@ public class Jeu
 		return résultat; 
 		
 	}
-
+	/*
+	 * public static void main(String[] args) { Jeu jeu = new Jeu();
+	 * jeu.setPersonnage(Personnage.createWarrior("noob")); jeu.setFirstEnnemy(new
+	 * Ennemy()); jeu.setSecondEnnemy(new Ennemy()); System.out.println("joueur : "
+	 * + jeu.getNomJoueur()); System.out.println("Ennemi 1 : " +
+	 * jeu.getFirstEnnemy().getName()); System.out.println("Ennemi 2 : " +
+	 * jeu.getSecondEnnemy().getName()); jeu.setNextAction(Actions.autoAttack);
+	 * System.out.println(jeu.tourJoueur()); System.out.println(jeu.tourEnnemy());
+	 * jeu.setNextAction(Actions.magicalAttack);
+	 * System.out.println(jeu.tourJoueur()); System.out.println(jeu.tourEnnemy()); }
+	 */
 
 }

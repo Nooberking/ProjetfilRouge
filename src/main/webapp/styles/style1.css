@@ -1,0 +1,54 @@
+body
+{
+	background-color :  #1c1c1e;
+	color : #fefefe;
+	text-align: center;
+	margin: 10em 0 0 0;
+	border: 5px solid #5A5E6B;
+	
+}
+
+input[type="radio"].choixPerso 
+{
+  display: none;
+  
+}
+input[type="radio"].choixPerso + label {
+  padding: 0.5rem 1rem;
+  
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.7rem;
+  color: #fff;
+  background-color: #6c757d;
+  border: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+input[type="radio"].choixPerso.guerrier:hover + label {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+input[type="radio"].choixPerso.guerrier:checked + label {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+input[type="radio"].choixPerso.mage:hover + label {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+input[type="radio"].choixPerso.mage:checked + label {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+input[type="submit"]
+{
+	background: #0066A2;
+	color: white;
+	border-radius: 0.7rem;
+	border-style: outset;
+	border-color: #0066A2;
+	height: 50px;
+	width: 100px;
+	font: bold 15px arial, sans-serif;
+	text-shadow:none;
+}
